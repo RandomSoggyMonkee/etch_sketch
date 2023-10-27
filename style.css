@@ -5,7 +5,8 @@ html {
     box-sizing: inherit;
   }
 
-#etchSketch {
+#etchSketch,
+#buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -22,4 +23,12 @@ html {
     width: 100%;
     height: 0px;
     border: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+#buttons {
+  margin-top: 5px;
 }
