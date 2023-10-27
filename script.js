@@ -7,7 +7,6 @@ function createBoxes() {
     }
 }
 
-
 createBoxes();
 
 let boxes = document.querySelectorAll('.box');
@@ -16,4 +15,11 @@ boxes.forEach(function(item) {
     item.addEventListener('mouseover', function() {
         item.setAttribute('style', 'background-color: black');
     });
+});
+
+resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('click', function() {
+    boxes.forEach(function(item) {
+        item.setAttribute('style', 'background-color: white');
+        });
 });
