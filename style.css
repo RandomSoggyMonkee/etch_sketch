@@ -12,6 +12,11 @@ html {
     justify-content: center;
 }
 
+#etchSketch {
+  max-width: 960px;
+  margin: auto;
+}
+
 #etchSketch > div {
     border: 1px solid black; 
     height: 25px; 
