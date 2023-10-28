@@ -1,39 +1,16 @@
+ 
 function shrinkNthBoxes(arr, nth) {
-    for(let i = 0; i < arr.length; i += nth) {
-        divsToResize.push(arr[i + 1]);
-    };
-    divsToResize.forEach(function(item) {
-        item.setAttribute('style', 'width: 100%; height: 0px; border: none;')
-    });
-};
+    const boxArray = Array.from(arr);
 
-function createBoxes(num) {
-    let size = num * num + num;
-    for (let i = 0; i < size; i++) {
-        let box = document.createElement('div');
-        box.setAttribute('class', 'box')
-        shrinkNthBoxes(boxes, gridSize);
-        gridContainer.appendChild(box);
+    for (let i = nth; i < boxArray.length; i = i + nth + 1) {
+        console.log(boxArray[i]);
+        divsToResize.push(boxArray[i]);
     }
-}
 
-// function nthBoxesArray(arr, nth) {
-//     for(let i = 0; i < arr.length; i += nth) {
-//         divsToResize.push(arr[i + 1]);
-//     };
-// };
-
-// function shrinkBoxes() {
-//     divsToResize.forEach(function(item) {
-//         item.setAttribute('style', 'width: 100%; height: 0px; border: none;')
-//     });
-// };
-
-function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    };
-};
+    divsToResize.forEach(function(item) {
+    item.setAttribute('style', 'width: 100%; height: 0; border: none;')
+    });
+ };
 
 function boxColouring() {
     boxes.forEach(function(item) {
@@ -43,8 +20,30 @@ function boxColouring() {
     });
 };
 
+function createBoxes(num) {
+    let size = num * num + num;
+    gridSize = num;
+    for (let i = 0; i < size; i++) {
+        let box = document.createElement('div');
+        box.setAttribute('class', 'box')
+        gridContainer.appendChild(box);
+    }
+    boxes = document.querySelectorAll('.box')
+    shrinkNthBoxes(boxes, gridSize);
+    boxColouring();
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    };
+};
+
 function NewGame() {
-    gridSize = +prompt('Please enter the side length of the square to generated.');
+    gridSize = +prompt('Please enter a side length, 1 - 100, for the grid to be generated.');
+    while (gridSize < 1 || gridSize > 100) {
+        gridSize = +prompt('That is not a valid number. Please enter a side length between 1 and 100.')
+    }
     removeAllChildNodes(gridContainer);
     createBoxes(gridSize);
     boxes = document.querySelectorAll('.box')
@@ -55,11 +54,12 @@ function NewGame() {
 
 let gridContainer = document.querySelector('#etchSketch');
 
-let gridSize = '';
+let boxes;
+
+let gridSize = 0;
 
 let divsToResize = [];
 
-let boxes = document.querySelectorAll('.box');
 
 
 let resetBtn = document.querySelector('#reset');
@@ -74,6 +74,4 @@ newGameBtn.addEventListener('click', newGame);
 
 
 
-createBoxes(16);
-
-boxColouring();
+//createBoxes(16);
