@@ -1,12 +1,10 @@
  
 function shrinkNthBoxes(arr, nth) {
     const boxArray = Array.from(arr);
-
     for (let i = nth; i < boxArray.length; i = i + nth + 1) {
         console.log(boxArray[i]);
         divsToResize.push(boxArray[i]);
     }
-
     divsToResize.forEach(function(item) {
     item.setAttribute('style', 'width: 100%; height: 0; border: none;')
     });
@@ -39,7 +37,7 @@ function removeAllChildNodes(parent) {
     };
 };
 
-function NewGame() {
+function newGame() {
     gridSize = +prompt('Please enter a side length, 1 - 100, for the grid to be generated.');
     while (gridSize < 1 || gridSize > 100) {
         gridSize = +prompt('That is not a valid number. Please enter a side length between 1 and 100.')
@@ -66,7 +64,10 @@ let resetBtn = document.querySelector('#reset');
 resetBtn.addEventListener('click', function() {
     boxes.forEach(function(item) {
         item.setAttribute('style', 'background-color: white');
-        });
+    });
+    divsToResize.forEach(function(item) {
+        item.setAttribute('style', 'width: 100%; height: 0; border: none;')
+    });    
 });
 
 let newGameBtn = document.querySelector('#newGame');
@@ -75,3 +76,4 @@ newGameBtn.addEventListener('click', newGame);
 
 
 //createBoxes(16);
+newGame();
