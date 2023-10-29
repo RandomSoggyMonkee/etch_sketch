@@ -1,8 +1,54 @@
  
+let gridContainer = document.querySelector('#etchSketch');
+
+let boxes;
+
+let gridSize = 0;
+
+let divsToResize = [];
+
+
+
+
+// take num
+// loop num times
+//   create row 
+//   assign class to row ?
+//     loop num times
+//       create box 
+//       assign class to box
+//       append box to row
+//   append row to document
+
+function createGrid(num) {
+    for (let i = 0; i < num; i++) {
+        let row = document.createElement('div').setAttribute('class', 'row');
+        for (let j = 0; j < num; j++) {
+            let box = document.createElement('div').setAttribute('class', 'box');
+            box.addEventListener('mouseover', function() {
+              box.setAttribute('style', 'background-color: black');
+            });
+            row.appendChild(box);
+        };
+        gridContainer.appendChild(row);
+    };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 function shrinkNthBoxes(arr, nth) {
     const boxArray = Array.from(arr);
     for (let i = nth; i < boxArray.length; i = i + nth + 1) {
-        console.log(boxArray[i]);
         divsToResize.push(boxArray[i]);
     }
     divsToResize.forEach(function(item) {
@@ -50,15 +96,6 @@ function newGame() {
 };
 
 
-let gridContainer = document.querySelector('#etchSketch');
-
-let boxes;
-
-let gridSize = 0;
-
-let divsToResize = [];
-
-
 
 let resetBtn = document.querySelector('#reset');
 resetBtn.addEventListener('click', function() {
@@ -75,5 +112,6 @@ newGameBtn.addEventListener('click', newGame);
 
 
 
-//createBoxes(16);
-newGame();
+// createBoxes(36);
+//newGame();
+createGrid(16)
