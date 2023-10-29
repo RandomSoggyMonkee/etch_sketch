@@ -43,6 +43,8 @@ h1 {
   margin: 0 0 5px 0;
 }
 
-#newGame {
+#newGame,
+#rainbow,
+#erase {
   margin-right: 5px;
 }

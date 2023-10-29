@@ -50,11 +50,35 @@ let resetBtn = document.querySelector('#reset');
 resetBtn.addEventListener('click', function() {
     boxes.forEach(function(item) {
         item.setAttribute('style', 'background-color: white');
+        item.addEventListener('mouseover', function() {
+            item.setAttribute('style', 'background-color: black');
+          });
     });   
 });
 
 let newGameBtn = document.querySelector('#newGame');
 newGameBtn.addEventListener('click', newGame);
+
+let rbowBtn = document.querySelector('#rainbow');
+rbowBtn.addEventListener('click', function(){
+    boxes.forEach(function (e) {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        e.addEventListener('mouseover', function() {
+            e.setAttribute('style', `background-color: rgb(${r}, ${g}, ${b})`);
+        });
+    });
+});
+
+let eraseBtn = document.querySelector('#erase');
+eraseBtn.addEventListener('click', function () {
+    boxes.forEach(function(item) {
+        item.addEventListener('mouseover', function() {
+            item.setAttribute('style', 'background-color: white');
+          });
+    });   
+});
 
 
 
