@@ -30,11 +30,18 @@ function removeAllChildNodes(parent) {
     };
 };
 
-function newGame() {
-    gridSize = +prompt('Please enter a side length, 1 - 100, for the grid to be generated.');
-    while (gridSize < 1 || gridSize > 100) {
-        gridSize = +prompt('That is not a valid number. Please enter a side length between 1 and 100.')
+function sizeChoice() {
+    gridSize = prompt('Please enter a side length, 1 - 100, for the grid to be generated.');
+    if (gridSize == null) {
+        alert('You pressed cancel');
+    }else if (gridSize < 1 || gridSize > 100 || !Number.isInteger(gridSize)) {
+        gridSize = sizeChoice();
     };
+    return gridSize;
+};
+
+function newGame() {
+    sizeChoice();
     removeAllChildNodes(gridContainer);
     createGrid(gridSize);
 };
