@@ -1,8 +1,6 @@
  
 let gridContainer = document.querySelector('#etchSketch');
-
 let boxes;
-
 let gridSize = 0;
 
 
