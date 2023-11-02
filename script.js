@@ -29,13 +29,12 @@ function removeAllChildNodes(parent) {
 };
 
 function sizeChoice() {
-    gridSize = prompt('Please enter a side length, 1 - 100, for the grid to be generated.');
+    gridSize = +prompt('Please enter a side length, 1 - 100, for the grid to be generated.');
     if (gridSize == null) {
         alert('You pressed cancel');
     }else if (gridSize < 1 || gridSize > 100 || !Number.isInteger(gridSize)) {
-        gridSize = sizeChoice();
+        return gridSize = sizeChoice();
     };
-    return gridSize;
 };
 
 function newGame() {
